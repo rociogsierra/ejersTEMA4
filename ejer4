@@ -1,17 +1,5 @@
 
-#BISECCIÖN
-
-def biseccion(f, a, b, tolerancia, iteracion = 1):
-    if f(a)*f(b)>=0:
-        print("este intervalo no tiene raíz para la funcion")
-    x = (a+b)/2
-    if -tolerancia < f(x) < tolerancia:
-        return x, iteracion
-    elif f(a)*f(x) >=0:
-        return biseccion(f, x, b, tolerancia, iteracion+1)
-    elif f(b)*f(x) >=0:
-        return biseccion(f, a, x, tolerancia, iteracion+1)
-
+import random
 
 #SECANTE
 
@@ -31,13 +19,45 @@ def secante(f, a, b, steps=50):
     return n
 
 
+#BISECCIÓN
+
+def biseccion(f, a, b, tolerancia, iteracion = 1):
+    if f(a)*f(b)>=0:
+        print("este intervalo no tiene raíz para la funcion")
+    x = (a+b)/2
+    if -tolerancia < f(x) < tolerancia:
+        return x, iteracion
+    elif f(a)*f(x) >=0:
+        return biseccion(f, x, b, tolerancia, iteracion+1)
+    elif f(b)*f(x) >=0:
+        return biseccion(f, a, x, tolerancia, iteracion+1)
+
+
 #NEWTON-RAPSON
 
 def newton_rapson(f, x, tolerancia, iteracion = 1):
+    funcion = (f(x0+tolerancia/2)-f(x0-tolerancia/2))/tolerancia
+    x = x0-f(x0/funcion)
+    if -tolerancia < f(x) < tolerancia:
+        return iteracion, x
+    return newton_rapson(f, x, tolerancia, iteracion+1)    
 
 
-#enunciado
+
+#enunciado_1
+f = lambda x: x**3 + x + 16
+x, iteraciones = secante
+print(x)
+print(iteracion)
+
+#enunciado_2
 f = lambda x: x**3 + x + 16
 x, iteraciones = biseccion
 print(x)
 print(iteracion)
+
+#enunciado_3
+f = lambda x: x**3 + x + 16
+x, iteraciones = newton_rapson
+print(x)
+print(iteracion) 
