@@ -1,0 +1,43 @@
+
+#BISECCIÖN
+
+def biseccion(f, a, b, tolerancia, iteracion = 1):
+    if f(a)*f(b)>=0:
+        print("este intervalo no tiene raíz para la funcion")
+    x = (a+b)/2
+    if -tolerancia < f(x) < tolerancia:
+        return x, iteracion
+    elif f(a)*f(x) >=0:
+        return biseccion(f, x, b, tolerancia, iteracion+1)
+    elif f(b)*f(x) >=0:
+        return biseccion(f, a, x, tolerancia, iteracion+1)
+
+
+#SECANTE
+
+def secante(f, a, b, steps=50):  
+    if fun(a) * fun(b) >= 0:
+        print('El método de la secante no se puede aplicar')
+        return None  
+    for n in range(steps + 1):
+        # Cálculo de la secante
+        n = a - fun(a)*(b - a)/(fun(b) - fun(a))     
+        if fun(n) == 0:
+            return n
+        if fun(a) * fun(n) < 0:
+            b = n
+        else:
+            a = n
+    return n
+
+
+#NEWTON-RAPSON
+
+def newton_rapson(f, x, tolerancia, iteracion = 1):
+
+
+#enunciado
+f = lambda x: x**3 + x + 16
+x, iteraciones = biseccion
+print(x)
+print(iteracion)
