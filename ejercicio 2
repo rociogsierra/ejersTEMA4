@@ -1,0 +1,49 @@
+
+import random
+
+class mision():
+   
+    def __init__(self, tipo, planeta_destino, general):
+        
+        self.tipo = tipo
+        self.planeta_destino = planeta_destino
+        
+        self.general = general
+    
+    def __str__(self):
+        return "misión de tipo {}, con destino {}, solicitada por el general {}".format(self.tipo, self.planeta_destino, self.general)
+
+class registro():
+   
+    def _init_(self, lista_de_misiones=[]):
+        self.lista_de_misiones = lista_de_misiones
+        self.registro = {}
+    
+    def prioridad_alta(self):
+       
+        for mision in self.lista_de_misiones:
+            if mision.general in ['Palpatine', 'Darth Vader']:
+                self.registro[mision.id] = {'Prioridad':'Alta', 'tipo':mision.tipo, 'general':mision.general}
+                self.prioridad_alta(mision)
+            else:
+                self.registro[mision.id] = {'Prioridad':'Baja', 'tipo':mision.tipo, 'general':mision.general} 
+    
+                if mision.tipo == 'exploración':
+                    self.registro[mision]['Scout Troopers'] = 15
+                    self.registro[mision]['Speeder Bike'] = 2
+                    self.registro[mision]['Stormtroopers'] = 0
+                    self.registro[mision]['Vehiculo aleatorios'] = []
+
+                elif mision.tipo == 'contención':
+                    self.registro[mision]['Scout Troopers'] = 0
+                    self.registro[mision]['Speeder Bike'] = 0
+                    self.registro[mision]['Stormtroopers'] = 30
+                    self.registro[mision]['Vehiculo aleatorio'] = random.choices(['AT-AT', 'AT-RT', 'AT-TE', 'AT-DP', 'AT-ST'], k=3)
+
+                elif mision.tipo == 'ataque':
+                    self.registro[mision]['Scout Troopers'] = 0
+                    self.registro[mision]['Speeder Bike'] = 0
+                    self.registro[mision]['Stormtroopers'] = 50
+                    self.registro[mision]['Vehiculo aleatorio'] = random.choices(['AT-AT', 'AT-RT', 'AT-TE', 'AT-DP', 'AT-ST', 'AT-M6', 'AT-MP', 'AT-DT'], k=7)               
+                else:
+                    break
