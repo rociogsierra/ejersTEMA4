@@ -56,6 +56,48 @@ def creararbol(nodos):
         print('\n')
     return nodos[0]
 
-    
+tabla = {
+    'A':11,
+    'B':2,
+    'C':4,
+    'D':3,
+    'E':14,
+    'G':3,
+    'I':6,
+    'L':6,
+    'M':3,
+    'N':6,
+    'O':7,
+    'P':4,
+    'Q':1,
+    'R':10,
+    'S':4,
+    'T':3,
+    'U':4,
+    'V':2,
+    ' ':17,
+    ',':2
+}
+
+#para obtener frecuencias
+total = sum(tabla.values())
+tabla_frecuencia = {k:v/total_tabla for k,v in tabla.items()}
+tabla_frecuencia
+
+#para ordenar alfabéticamente
+lista_en_orden = sorted(tabla_frecuencia.items(), key=lambda x: x[1], reverse=False)
+lista_en_orden
+
+nodo = creararbol(lista_en_orden)
+
+nodo
+
+nodo[0]
+
+nodo[0].children()
+
+codificacion = huffman_arbol_code(nodo[0])
+for i in codificacion:
+    print(f'{i} : {codificacion[i]}')
 
     
