@@ -1,6 +1,8 @@
 
 import random
 
+#no se si este ejercicio está bien hecho
+
 class mision():
    
     def __init__(self, tipo, planeta_destino, general):
